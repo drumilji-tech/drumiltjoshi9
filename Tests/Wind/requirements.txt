@@ -1,0 +1,6 @@
+Charts==0.4.6
+Model==0.6.0
+numpy==1.23.1
+pandas==1.1.5
+python_dateutil==2.8.2
+Utils==1.0.1

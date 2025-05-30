@@ -1,0 +1,333 @@
+/* Solar Pages
+–––––––––––––––––––––––––––––––––––––––––
+
+  General
+  Weather Station
+  Historical Weather Station (HWS)
+  Inverters Performance Ratio
+
+*/
+
+:root {
+  --hws-table-scrollbar-width: 1rem;
+  --probability-of-exceedance-btn-width: 213px;
+
+  --tornado-margin-t: 90px;
+  --tornado-margin-b: 120px;
+  --torando-height: 600px;
+  --tornado-tornado-labelstandoff: 20px;  /* this number is an estimated */
+  --tornado-scrollarea-translateY: 40px;  /* this number is an estimated */
+
+  --scrollarea-color: #202020;
+  --scrollarea-color-hover: #404040;
+
+  --metrics-modal-margin: 2rem;
+}
+
+
+/* General
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.last-updated-callout {
+  font-weight: 100;
+  font-size: 1rem;
+  color: #CCC;
+}
+
+/* Weather Station
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Place the Self-Perform Checkbox right next to the (Plant) Dropdown */
+#project-dropdown-label {
+  display: block;
+  position: relative;
+}
+#self-perform-checkbox {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+#recovery-threshold-slider {
+  padding: 0 4px 25px !important;
+}
+
+.chart-spotlight-control {
+  position: relative;
+  height: 24px;
+  display: block;
+}
+
+.comparion-table-download-btn {
+  line-height: 34px;
+  width: 100%;
+  display: block;
+  transition: 0.1s;
+}
+
+/* Scrollarea for Tornado Charts */
+.tornado-chart rect.nsdrag.drag.cursor-ns-resize {
+  transition: 0.4s;
+  fill: var(--scrollarea-color) !important;
+  outline: 1px solid rgba(0,0,0,0);
+  height: calc(var(--torando-height) - var(--tornado-margin-t) - var(--tornado-margin-b));
+  rx: 2px !important;
+  transform: translate(
+    var(--tornado-tornado-labelstandoff),
+    calc(-1 * var(--tornado-scrollarea-translateY))
+  );
+}
+.tornado-chart rect.nsdrag.drag.cursor-ns-resize:hover {
+  fill: var(--scrollarea-color-hover) !important;
+  outline: 1px solid #333;
+}
+
+
+/* Style the Plotly Tabs */
+
+div.tab-container {
+  display: flex;
+  background-color: rgba(0,0,0,0);
+  width: 100% !important;
+  justify-content: start;
+}
+
+div.tab {
+  border-radius: 6px 6px 0 0 !important;
+  height: 20px;
+  margin-right: 2rem;
+  border-top: 2px solid rgba(0,0,0,0) !important;
+  border-left: 2px solid #FFFFFF !important;
+  border-right: 2px solid #FFFFFF !important;
+  background-color: #171717 !important;
+  width: 250px !important;
+}
+
+div.tab span {
+  display: block;
+  transform: translate(0, -60%);
+}
+
+div.tab.tab--selected {
+  border-top-color: var(--southernpower-blue) !important;
+  background-color: #252525 !important;
+}
+
+div.tab:not(.tab--selected) {
+  opacity: 0.6;
+  background-color: inherit;
+  border-top-color: #FFFFFF !important;
+}
+
+.tab-content {
+  border: 2px solid #FFFFFF;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+
+/* Drilled-Down Container */
+
+#drilled-down-charts-container {
+  margin-top: 1rem;
+}
+
+.disabled-container .tab-content {
+  height: 0px !important;
+  overflow: hidden !important;
+}
+.not-disabled-container .tab-content {
+  /* height: 600px !important; */
+  overflow: visible !important;
+}
+
+.disabled-container {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.not-disabled-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* Historical Weather Station (HWS)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+div.fade.show.popover {
+  z-index: 999;
+  background-color: #212121;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+div.fade.show.popover table th, div.fade.show.popover table td {
+  outline: 0.5px solid #333;
+  padding: 0.2rem;
+}
+
+.poe-details-button, .popover-button {
+  background-color: rgb(255, 218, 106);
+  outline: 0 solid red;
+  border: 0px solid red;
+  border-radius: 4px;
+  position: relative;
+  transition: 0.1s;
+}
+
+.popover-body code {
+  color: #D16464 !important;
+  background-color: #212121 !important;
+  font-family: monospace !important;
+  font-size: 1rem;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.popover-body strong {
+  font-weight: 900 !important;
+}
+
+.poe-details-button {
+  margin: 0.5rem 0;
+  left: calc(100% -  var(--probability-of-exceedance-btn-width))
+}
+
+.poe-details-button:hover, .popover-button:hover {
+  opacity: 0.7;
+}
+
+.metrics-details-button {
+  background-color: rgb(255, 218, 106);
+  outline: 0 solid red;
+  border: 0px solid red;
+  border-radius: 4px;
+  transition: 0.1s;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  transform: translate(calc(-0.5rem - 4rem), -2.5rem);
+  z-index: 5;
+}
+.metrics-details-button:hover {
+  opacity: 0.7;
+}
+
+#download-recovery-chart-button {
+  background-color: var(--southernpower-lightblue);
+  color: white;
+}
+
+
+.close-metrics-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(0,0,0,0);
+  outline: 0px solid white;
+  border: 0px solid white;
+  color: white;
+  font-size: 2rem;
+  line-height: 0;
+  padding: 0;
+  opacity: 0.8;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.close-metrics-modal:hover {
+  opacity: 1;
+}
+
+#modal-metrics {
+  border-radius: 8px;
+  background-color: #212429 !important;
+  color: rgb(222, 226, 230);
+  position: fixed !important;
+  margin: var(--metrics-modal-margin);
+  left: 0 !important;
+  top: 0 !important;
+  height: calc(100vh - 2 * var(--metrics-modal-margin)) !important;
+  width: calc(100% - 2 * var(--metrics-modal-margin)) !important;
+  z-index: 99999;
+}
+
+#modal-metrics h1 {
+  text-align: center;
+  font-weight: 900;
+}
+
+#modal-metrics h2, #modal-metrics p {
+  text-align: center;
+}
+#modal-metrics h2 {
+  font-size: 2rem;
+}
+#modal-metrics .secondary-text {
+  color: #959A9F;
+}
+
+#modal-metrics .metric-description h2 {
+  font-size: 1.5rem !important;
+  text-align: left;
+}
+#modal-metrics .metric-description p {
+  font-size: 1rem;
+  text-align: left;
+}
+#modal-metrics .metric-description ul {
+  list-style-type: disc;
+  text-align: left;
+}
+
+/* Shoutout the 1st line the body of the metric explanations */
+#modal-metrics .metric-description p:first-child {
+  font-family: 800;
+  background-color: rgb(37, 40, 50);
+  padding: 1rem;
+}
+#modal-metrics .metric-description strong {
+  font-weight: 900;
+}
+
+
+/* Make sure you can scroll across the content in the Modal */
+#modal-metrics .tab-content {
+  overflow-y: auto;
+  /*
+    Note that this max-height is a rough-handed estimate,
+    and should be corrected down the line.
+
+    We are trying to figure out the height of .tab-content so
+    that it fills up the remaining height of the modal.
+  */
+  max-height: calc(100vh - 2 * var(--metrics-modal-margin) - 66px - 1rem - 2rem - 160px) !important;
+}
+
+
+.metric-image-container {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: auto auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+/*
+  Remove the underline in the header cells that don't have
+  tooltips on hover.
+
+  Since we are using the underline motif as a way to express
+  that a popup will appear when you hover over the text,
+  we want to remove this from the cells that don't have so
+  as to not confuse the user.
+*/
+#comparison-table th:first-child {
+  text-decoration: inherit !important;
+}
+#comparison-table th:last-child {
+  text-decoration: inherit !important;
+}
+
+/* Inverters Performance Ratio
+–––––––––––––––––––––––––––––––––––––––––––––––––– */

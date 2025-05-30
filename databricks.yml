@@ -1,0 +1,25 @@
+# The Databricks extension requires databricks.yml configuration file.
+
+# The file was generated automatically by the Databricks extension. 
+# It's based on the configuration located in `.databricks/project.json`.
+# If you don't want this file to be created automatically, remove the `.databricks/project.json`.
+
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+
+bundle:
+  name: auto-issue-id-application
+
+targets:
+  dev:
+    mode: development
+    default: true
+    # serverless_compute_id: 0509-133340-13iy3a13
+    workspace:
+      host: https://adb-5068312773981457.17.azuredatabricks.net
+      root_path: /Users/x2akulid@southernco.com/.ide/auto-issue-id-application-96dda011
+
+  ## Optionally, there could be 'staging' or 'prod' targets here.
+  #
+  # prod:
+  #   workspace:
+  #     host: https://adb-5068312773981457.17.azuredatabricks.net

@@ -1,0 +1,70 @@
+# -*- mode: python ; coding: utf-8 -*-
+
+
+a = Analysis(
+    ['index.py'],
+    pathex=[
+        '.',
+        r'C:\Users\X2JERICH\OneDrive - Southern Company\Desktop\Projects\auto-issue-id-application\aiid_env\Lib\site-packages'
+    ],
+    binaries=[],
+    datas=[
+        ('assets/*', 'assets'),
+        ('assets/data/*', 'assets/data'),
+        ('assets/data/all_ws_dist.csv', 'assets/data'),
+        ('assets/data/turbine_proximity.csv', 'assets/data'),
+        ('assets/data/surrogation_strategies.csv', 'assets/data'),
+        ('assets/data/RevenuePerMWh.csv', 'assets/data'),
+        ('assets/data/power_curves/*','assets/data/power_curves'),
+        ('assets/fonts/*','assets/fonts'),
+        ('assets/images/*', 'assets/images'),
+        ('Charts/*', 'Charts'),
+        ('Charts/Solar/*', 'Charts/Solar'),
+        ('Model/*', 'Model'),
+        ('Model/Constants*', 'Model'),
+        ('Utils/*', 'Utils'),
+        ('pages/*', 'pages'),
+        ('isight.env', '.'),
+        ('databricks.yml', '.'),
+        ('.databricks/*', '.databricks'),
+        ('css/*', 'css'),
+        ('app.py', '.'),
+        (r'C:\Users\X2JERICH\OneDrive - Southern Company\Desktop\Projects\auto-issue-id-application\aiid_env\Lib\site-packages\pyspark\errors', 'pyspark/errors'),
+    ],
+    hiddenimports=[
+        'pysqlite2',
+        'MySQLdb',
+        'psycopg2',
+        'pyspark',
+        'databricks.connect',
+    ],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    noarchive=False,
+    optimize=0,
+)
+pyz = PYZ(a.pure)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.datas,
+    [],
+    name='iSightSolar',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+    onefile=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
